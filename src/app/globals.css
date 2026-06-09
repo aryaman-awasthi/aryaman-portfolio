@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* RGB channels so Tailwind opacity modifiers (e.g. bg-bg/80) work */
+  --bg: 8 9 13;
+  --bg-elevated: 13 15 21;
+  --surface: 17 19 25;
+  --text: 231 232 236;
+  --text-dim: 150 154 168;
+  --text-faint: 90 95 110;
+  --accent: 110 231 222;
+  --accent-2: 164 139 245;
+
+  /* Borders are inherently translucent */
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.13);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+section {
+  scroll-margin-top: 88px;
+}
+
+::selection {
+  background: rgba(110, 231, 222, 0.25);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb {
+  background: #20232c;
+  border-radius: 999px;
+  border: 2px solid rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2b2f3a;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Signature: faint dotted grid backdrop */
+.bg-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 0
+  );
+  background-size: 30px 30px;
+}
+
+/* Radial fade so the node-field dissolves into the background at the edges */
+.field-mask {
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 42%,
+    #000 35%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 75% 65% at 50% 42%,
+    #000 35%,
+    transparent 100%
+  );
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.24em] text-accent;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-md border border-line bg-elevated px-2.5 py-1 font-mono text-xs text-dim transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-bg transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_34px_-10px_rgb(var(--accent))];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line-strong px-5 py-2.5 text-sm font-medium text-ink transition-all duration-200 hover:border-accent hover:text-accent;
+  }
+}
