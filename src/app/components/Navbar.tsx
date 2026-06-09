@@ -26,8 +26,8 @@ export default function Navbar() {
 
       <div
         className={`transition-colors duration-300 ${scrolled
-            ? "border-b border-line bg-bg/80 backdrop-blur-xl"
-            : "border-b border-transparent"
+          ? "border-b border-line bg-bg/80 backdrop-blur-xl"
+          : "border-b border-transparent"
           }`}
       >
         <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-8">
@@ -81,7 +81,7 @@ export default function Navbar() {
               className="ml-1 hidden items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm font-medium text-ink transition-all duration-200 hover:border-accent hover:text-accent sm:inline-flex"
             >
               <Download size={15} strokeWidth={1.75} />
-              Résumé
+              Resume
             </a>
 
             <button
@@ -116,7 +116,7 @@ export default function Navbar() {
                 className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-line-strong px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
               >
                 <Download size={15} strokeWidth={1.75} />
-                Download résumé
+                Download Resume
               </a>
             </div>
           </div>

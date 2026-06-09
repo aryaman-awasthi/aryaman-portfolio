@@ -6,7 +6,7 @@ type Node = { x: number; y: number; vx: number; vy: number };
 
 const LINK_DIST = 132;
 const DOT_COLOR = "rgba(184, 192, 210, 0.55)";
-const LINK_COLOR = "110, 231, 222"; // accent rgb, alpha applied per-segment
+const LINK_COLOR = "110, 231, 222";
 
 export default function VectorField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -18,12 +18,15 @@ export default function VectorField() {
     if (!ctx) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Cap DPR at 1.5 on mobile to keep canvas pixels manageable
+    const isMobile = window.innerWidth < 768;
+    const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2);
 
     let width = 0;
     let height = 0;
     let nodes: Node[] = [];
     let raf = 0;
+    let mobile = isMobile;
 
     const seed = () => {
       const parent = canvas.parentElement;
@@ -31,13 +34,16 @@ export default function VectorField() {
       const rect = parent.getBoundingClientRect();
       width = rect.width;
       height = rect.height;
+      mobile = width < 768;
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const count = Math.max(28, Math.min(76, Math.floor((width * height) / 15500)));
+      const count = mobile
+        ? Math.max(12, Math.min(20, Math.floor((width * height) / 22000)))
+        : Math.max(28, Math.min(76, Math.floor((width * height) / 15500)));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,

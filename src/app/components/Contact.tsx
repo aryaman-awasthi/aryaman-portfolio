@@ -19,7 +19,7 @@ export default function Contact() {
 
             <a
               href={`mailto:${profile.email}`}
-              className="group mt-8 inline-flex items-center gap-3 font-display text-2xl font-medium text-ink transition-colors hover:text-accent sm:text-3xl"
+              className="group mt-8 inline-flex items-center gap-3 font-display text-xl font-medium text-ink transition-colors hover:text-accent break-all sm:text-2xl md:text-3xl"
             >
               {profile.email}
               <ArrowUpRight
@@ -40,7 +40,7 @@ export default function Contact() {
             >
               <span className="flex items-center gap-3 text-sm font-medium text-ink">
                 <Download size={18} strokeWidth={1.75} className="text-accent" />
-                Download résumé
+                Download Resume
               </span>
               <span className="font-mono text-xs text-faint">PDF</span>
             </a>

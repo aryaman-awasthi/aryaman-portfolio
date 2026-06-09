@@ -1,12 +1,18 @@
+import dynamic from "next/dynamic";
 import { ArrowUpRight, Download, ArrowDown } from "lucide-react";
 import { profile } from "@/lib/data";
-import VectorField from "./VectorField";
+
+// Lazy-load off the critical path — canvas animation should never delay first paint
+const VectorField = dynamic(() => import("./VectorField"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex overflow-hidden pt-24 pb-16 sm:min-h-screen sm:items-center sm:pt-0 sm:pb-0"
     >
       {/* Signature: ambient node-field + soft accent glow */}
       <div className="field-mask absolute inset-0" aria-hidden="true">
@@ -14,7 +20,7 @@ export default function Hero() {
       </div>
       <div
         aria-hidden="true"
-        className="absolute left-1/2 top-[38%] h-[420px] w-[620px] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.07] blur-[120px]"
+        className="absolute left-1/2 top-[38%] h-[420px] w-[620px] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.07] blur-[60px] sm:blur-[120px]"
       />
 
       <div className="relative mx-auto w-full max-w-content px-6 sm:px-8">
@@ -47,7 +53,7 @@ export default function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href={profile.resume} download className="btn-primary">
               <Download size={16} strokeWidth={1.9} />
-              Download résumé
+              Download Resume
             </a>
             <a href="#work" className="btn-ghost">
               View work
