@@ -1,6 +1,7 @@
 export const profile = {
   name: "Aryaman Awasthi",
   role: "Full-Stack Developer",
+  openToWork: true,
   location: "Mumbai, India",
   email: "aryaman.awasthi79@gmail.com",
   phone: "+91 70073 34949",
@@ -15,9 +16,9 @@ export const profile = {
 };
 
 export const facts = [
-  { label: "Education", value: "B.Tech, EEE - VIT Vellore" },
+  { label: "Education", value: "B.Tech, EEE — VIT" },
   { label: "Years", value: "2021 – 2025" },
-  { label: "Now", value: "Full-Stack Developer @ TCS" },
+  { label: "Now", value: "Full-Stack Dev @ TCS" },
   { label: "Focus", value: "Full-stack + applied AI" },
 ];
 
@@ -34,7 +35,7 @@ export const skillGroups: SkillGroup[] = [
     items: ["RAG", "Vector Embeddings", "Semantic Search", "Transformers", "NLP"],
   },
   { label: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB", "Firebase"] },
-  { label: "Tools & DevOps", items: ["Git", "GitHub", "Docker"] },
+  { label: "DevOps", items: ["Git", "GitHub", "Docker"] },
 ];
 
 export type Experience = {
@@ -49,8 +50,8 @@ export const experience: Experience[] = [
   {
     company: "Tata Consultancy Services",
     role: "Full-Stack Developer",
-    period: "Jan 2026 - Present",
-    location: "Mumbai, India",
+    period: "Jan 2026 — present",
+    location: "Mumbai",
     points: [
       "Building an AI-powered enterprise assistant for territory-level analytics and executive insight generation, contributing across the full stack.",
       "Engineering Retrieval-Augmented Generation (RAG), semantic search, and vector-embedding pipelines, plus multi-agent workflows with LangChain and LangGraph.",
@@ -72,7 +73,7 @@ export const projects: Project[] = [
     name: "Small Language Model",
     type: "Machine Learning",
     description:
-      "A GPT-style language model built from scratch in PyTorch - transformer blocks, causal self-attention, and custom token embeddings - with an end-to-end pipeline covering tokenization, memory-mapped batching, mixed-precision training, and cosine LR scheduling. Trained and evaluated on TinyStories.",
+      "A GPT-style language model built from scratch in PyTorch — transformer blocks, causal self-attention, and custom token embeddings — with an end-to-end pipeline covering tokenization, memory-mapped batching, mixed-precision training, and cosine LR scheduling. Trained and evaluated on TinyStories.",
     tags: ["PyTorch", "Transformers", "NLP"],
     link: profile.slm,
   },
@@ -80,7 +81,7 @@ export const projects: Project[] = [
     name: "SQLInspector",
     type: "Django Middleware",
     description:
-      "Django middleware that captures and analyzes SQL queries in real time, surfacing the efficiency of database operations and exposing exactly how the ORM talks to the database.",
+      "Django middleware that captures and analyzes SQL queries in real time — surfacing the efficiency of database operations and exposing exactly how the ORM talks to the database.",
     tags: ["Python", "Django", "SQL"],
     link: profile.sql_inspector,
   },
@@ -96,7 +97,7 @@ export const projects: Project[] = [
     name: "Sciber Fiesta 2019",
     type: "Android · Play Store",
     description:
-      "An event-management app for an inter-school fest - team creation and event flow handled end to end, independently developed and published on the Google Play Store.",
+      "An event-management app for an inter-school fest — team creation and event flow handled end to end, independently developed and published on the Google Play Store.",
     tags: ["Android", "Play Store"],
     link: profile.sf,
   },
@@ -111,23 +112,24 @@ export type Involvement = {
 
 export const involvement: Involvement[] = [
   {
-    org: "CodeChef - VIT",
+    org: "CodeChef — VIT",
     role: "Senior Core Member",
-    period: "Mar 2022 - Jan 2024",
+    period: "2022 — 2024",
     detail:
-      "Led technical training on Git/GitHub and Flutter, reaching 150+ live participants and 900+ recorded viewers.",
+      "Led technical training on Git/GitHub and Flutter — 150+ live participants, 900+ recorded viewers.",
   },
   {
     org: "Sciber Fiesta 2019",
     role: "Head of Technical Team",
-    period: "Jan 2019 - Aug 2019",
+    period: "2019",
     detail:
-      "Led a 40-member team to run 10 technical events, including 7 new initiatives, alongside a Play Store app.",
+      "Led a 40-member team running 10 technical events — 7 new initiatives — plus a Play Store app.",
   },
 ];
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
+  { label: "about", href: "#about" },
+  { label: "stack", href: "#stack" },
+  { label: "work", href: "#work" },
+  { label: "contact", href: "#contact" },
 ];

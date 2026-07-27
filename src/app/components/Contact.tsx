@@ -1,88 +1,50 @@
-import { Mail, Github, Linkedin, Download, ArrowUpRight } from "lucide-react";
 import { profile } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-content px-6 py-24 sm:px-8 sm:py-32">
-      <SectionHeading index="05" eyebrow="Contact" title="Let's build something" />
-
-      <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:items-center md:gap-16">
-        <Reveal>
-          <div>
-            <p className="max-w-md text-base leading-relaxed text-dim">
-              I'm open to new opportunities and interesting problems -
-              full-stack work, applied AI, or anything in between. The fastest
-              way to reach me is email.
-            </p>
-
-            <a
-              href={`mailto:${profile.email}`}
-              className="group mt-8 inline-flex items-center gap-3 font-display text-xl font-medium text-ink transition-colors hover:text-accent break-all sm:text-2xl md:text-3xl"
-            >
-              {profile.email}
-              <ArrowUpRight
-                size={24}
-                strokeWidth={1.75}
-                className="text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent"
-              />
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <div className="flex flex-col gap-3">
-            <a
-              href={profile.resume}
-              download
-              className="flex items-center justify-between rounded-xl border border-line bg-elevated/40 px-5 py-4 transition-all duration-200 hover:border-accent hover:bg-elevated"
-            >
-              <span className="flex items-center gap-3 text-sm font-medium text-ink">
-                <Download size={18} strokeWidth={1.75} className="text-accent" />
-                Download Resume
-              </span>
-              <span className="font-mono text-xs text-faint">PDF</span>
-            </a>
-
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between rounded-xl border border-line bg-elevated/40 px-5 py-4 transition-all duration-200 hover:border-accent hover:bg-elevated"
-            >
-              <span className="flex items-center gap-3 text-sm font-medium text-ink">
-                <Github size={18} strokeWidth={1.75} className="text-accent" />
-                GitHub
-              </span>
-              <ArrowUpRight size={16} className="text-faint" />
-            </a>
-
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between rounded-xl border border-line bg-elevated/40 px-5 py-4 transition-all duration-200 hover:border-accent hover:bg-elevated"
-            >
-              <span className="flex items-center gap-3 text-sm font-medium text-ink">
-                <Linkedin size={18} strokeWidth={1.75} className="text-accent" />
-                LinkedIn
-              </span>
-              <ArrowUpRight size={16} className="text-faint" />
-            </a>
-
-            <a
-              href={`mailto:${profile.email}`}
-              className="flex items-center justify-between rounded-xl border border-line bg-elevated/40 px-5 py-4 transition-all duration-200 hover:border-accent hover:bg-elevated"
-            >
-              <span className="flex items-center gap-3 text-sm font-medium text-ink">
-                <Mail size={18} strokeWidth={1.75} className="text-accent" />
-                Email
-              </span>
-              <ArrowUpRight size={16} className="text-faint" />
-            </a>
-          </div>
-        </Reveal>
+    <section id="contact">
+      <SectionHeading index="05" title="CONTACT" cmd="ping aryaman" />
+      <div className="border border-line bg-panel px-[18px] py-[30px] text-center md:px-10 md:py-11">
+        <div className="text-[13px] text-faint">
+          <span className="text-acc">$</span> mail --to
+        </div>
+        <a
+          href={`mailto:${profile.email}`}
+          className="mt-3.5 inline-block break-all text-[17px] font-bold text-ink transition-colors hover:text-acc md:break-normal md:text-[30px] md:tracking-[-1px]"
+        >
+          {profile.email}
+        </a>
+        <p className="mx-auto mt-3.5 max-w-[520px] text-[13px] text-muted">
+          Open to new opportunities and interesting problems — full-stack work,
+          applied AI, or anything in between.
+        </p>
+        <div className="mt-[26px] flex flex-wrap justify-center gap-3">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-line2 px-[18px] py-2.5 text-[13px] text-fg2 transition-colors hover:border-acc hover:text-acc"
+          >
+            [ github ↗ ]
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-line2 px-[18px] py-2.5 text-[13px] text-fg2 transition-colors hover:border-acc hover:text-acc"
+          >
+            [ linkedin ↗ ]
+          </a>
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-line2 px-[18px] py-2.5 text-[13px] text-fg2 transition-colors hover:border-acc hover:text-acc"
+          >
+            [ resume ↓ ]
+          </a>
+        </div>
       </div>
     </section>
   );

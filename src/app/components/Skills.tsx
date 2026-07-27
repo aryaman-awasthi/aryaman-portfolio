@@ -1,31 +1,43 @@
 import { skillGroups } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
+
+const spans = [
+  "md:col-span-4",
+  "md:col-span-8",
+  "md:col-span-5",
+  "md:col-span-4",
+  "md:col-span-3",
+];
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-content px-6 py-24 sm:px-8 sm:py-32">
-      <SectionHeading index="02" eyebrow="Stack" title="Tools I build with" />
-
-      <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+    <section id="stack">
+      <SectionHeading index="02" title="STACK" cmd="ls ./tools" />
+      <div className="grid gap-3.5 md:grid-cols-12">
         {skillGroups.map((group, i) => (
-          <Reveal key={group.label} delay={i * 0.05}>
-            <div className="flex flex-col gap-4 border-t border-line pt-5">
-              <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-faint">
-                {group.label}
-              </h3>
-              <ul className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="chip hover:border-accent hover:text-ink"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <div
+            key={group.label}
+            className={`border border-line bg-panel px-6 py-[22px] transition-colors hover:border-line-hover ${spans[i] ?? ""}`}
+          >
+            <div className="mb-3.5 flex justify-between">
+              <span className="text-xs font-bold text-acc">
+                &gt; {group.label.toLowerCase()}
+              </span>
+              <span className="text-[11px] text-faint">
+                ({group.items.length})
+              </span>
             </div>
-          </Reveal>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span
+                  key={item}
+                  className="border border-line2 bg-panel2 px-[11px] py-1 text-xs leading-[1.6] text-fg2"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>

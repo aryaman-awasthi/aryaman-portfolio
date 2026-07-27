@@ -10,22 +10,24 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <>
-      {/* Ambient dotted-grid backdrop */}
+      {/* CRT scanline overlay */}
       <div
         aria-hidden="true"
-        className="bg-grid pointer-events-none fixed inset-0 -z-10 opacity-60 [mask-image:radial-gradient(ellipse_at_top,#000_5%,transparent_70%)]"
+        className="scanlines pointer-events-none fixed inset-0 z-50"
       />
 
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="mx-auto max-w-[1180px] px-3 pb-10 pt-3 md:px-6 md:pb-14 md:pt-5">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

@@ -1,72 +1,47 @@
 import { experience, involvement } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
 
 export default function Experience() {
+  const job = experience[0];
+
   return (
-    <section
-      id="experience"
-      className="mx-auto max-w-content px-6 py-24 sm:px-8 sm:py-32"
-    >
-      <SectionHeading index="03" eyebrow="Experience" title="Where I've worked" />
-
-      <div className="space-y-12">
-        {experience.map((job) => (
-          <Reveal key={job.company}>
-            <div className="relative border-l border-line pl-6 sm:pl-8">
-              <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent bg-bg" />
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                <h3 className="font-display text-xl font-semibold text-ink">
-                  {job.role}{" "}
-                  <span className="text-dim">· {job.company}</span>
-                </h3>
-                <span className="font-mono text-xs text-faint">
-                  {job.period}
-                </span>
-              </div>
-              <p className="mt-0.5 font-mono text-xs text-faint">
-                {job.location}
-              </p>
-              <ul className="mt-4 space-y-2.5">
-                {job.points.map((point, i) => (
-                  <li
-                    key={i}
-                    className="flex gap-3 text-sm leading-relaxed text-dim"
-                  >
-                    <span className="mt-2 h-1 w-1 flex-none rounded-full bg-accent" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+    <section id="experience">
+      <SectionHeading index="03" title="EXPERIENCE" cmd="git log --experience" />
+      <div className="grid gap-3.5 md:grid-cols-12">
+        <div className="border border-line bg-panel px-[30px] py-7 md:col-span-7">
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h3 className="text-lg font-bold text-ink">{job.role}</h3>
+              <div className="mt-1 text-[13px] text-acc">{job.company}</div>
             </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal delay={0.1}>
-        <div className="mt-16 border-t border-line pt-8">
-          <p className="eyebrow mb-6">Leadership &amp; community</p>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {involvement.map((item) => (
-              <div
-                key={item.org}
-                className="rounded-xl border border-line bg-elevated/40 p-5"
-              >
-                <div className="flex items-baseline justify-between gap-3">
-                  <h4 className="font-medium text-ink">{item.org}</h4>
-                  <span className="font-mono text-xs text-faint">
-                    {item.period}
-                  </span>
-                </div>
-                <p className="mt-0.5 text-sm text-accent">{item.role}</p>
-                <p className="mt-3 text-sm leading-relaxed text-dim">
-                  {item.detail}
-                </p>
+            <span className="whitespace-nowrap border border-line2 px-2.5 py-1 text-[11px] text-dim">
+              {job.period} · {job.location}
+            </span>
+          </div>
+          <div className="mt-[22px] flex flex-col gap-3">
+            {job.points.map((point) => (
+              <div key={point} className="flex gap-3">
+                <span className="shrink-0 text-acc">&gt;</span>
+                <span className="text-[13px] text-muted">{point}</span>
               </div>
             ))}
           </div>
         </div>
-      </Reveal>
+        <div className="grid grid-rows-2 gap-3.5 md:col-span-5">
+          {involvement.map((item) => (
+            <div key={item.org} className="border border-line bg-panel px-6 py-[22px]">
+              <div className="flex justify-between gap-3">
+                <div className="text-sm font-bold text-ink">{item.org}</div>
+                <span className="whitespace-nowrap text-[11px] text-faint">
+                  {item.period}
+                </span>
+              </div>
+              <div className="mt-[3px] text-xs text-acc">{item.role}</div>
+              <p className="mt-2.5 text-[12.5px] text-muted">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
