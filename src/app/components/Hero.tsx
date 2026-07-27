@@ -1,84 +1,91 @@
-import dynamic from "next/dynamic";
-import { ArrowUpRight, Download, ArrowDown } from "lucide-react";
 import { profile } from "@/lib/data";
-
-// Lazy-load off the critical path — canvas animation should never delay first paint
-const VectorField = dynamic(() => import("./VectorField"), {
-  ssr: false,
-  loading: () => null,
-});
 
 export default function Hero() {
   return (
-    <section
-      id="top"
-      className="relative flex overflow-hidden pt-24 pb-16 sm:min-h-screen sm:items-center sm:pt-0 sm:pb-0"
-    >
-      {/* Signature: ambient node-field + soft accent glow */}
-      <div className="field-mask absolute inset-0" aria-hidden="true">
-        <VectorField />
-      </div>
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-[38%] h-[420px] w-[620px] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.07] blur-[60px] sm:blur-[120px]"
-      />
-
-      <div className="relative mx-auto w-full max-w-content px-6 sm:px-8">
-        <div className="max-w-3xl">
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-elevated/60 px-3.5 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-dot" />
-            <span className="font-mono text-xs tracking-wide text-dim">
-              Open to new opportunities
-            </span>
-          </div>
-
-          <p className="eyebrow mb-5">Full-stack developer - applied AI</p>
-
-          <h1 className="font-display text-5xl font-bold leading-[1.02] tracking-tight text-ink sm:text-6xl md:text-7xl">
-            {profile.name}
-          </h1>
-
-          <p className="mt-6 max-w-2xl font-display text-xl font-medium leading-snug text-ink/90 sm:text-2xl">
-            I build full-stack applications and the{" "}
-            <span className="text-accent">AI systems</span> that make them
-            intelligent.
-          </p>
-
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-dim">
-            Java and Spring Boot on the back end, Angular and React on the
-            front, and a growing stack of RAG, embeddings, and multi-agent
-            workflows in between - currently building all three at TCS.
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href={profile.resume} download className="btn-primary">
-              <Download size={16} strokeWidth={1.9} />
-              Download Resume
-            </a>
-            <a href="#work" className="btn-ghost">
-              View work
-              <ArrowUpRight size={16} strokeWidth={1.9} />
-            </a>
-          </div>
-
-          <div className="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs text-faint">
-            <span>{profile.location}</span>
-            <span className="text-line-strong">/</span>
-            <span>B.Tech - VIT Vellore</span>
-            <span className="text-line-strong">/</span>
-            <span>{profile.githubHandle}</span>
-          </div>
+    <section className="mt-3.5 grid gap-3.5 md:grid-cols-12">
+      {/* $ whoami box */}
+      <div className="flex flex-col border border-line bg-panel px-5 py-[26px] md:col-span-8 md:px-9 md:pb-[34px] md:pt-[38px]">
+        <div className="text-[13px] text-faint">
+          <span className="text-acc">$</span> whoami
+        </div>
+        <h1 className="mt-[18px] text-[42px] font-extrabold leading-[1.02] tracking-[-1px] text-ink md:text-[74px] md:tracking-[-3px]">
+          ARYAMAN
+          <br />
+          AWASTHI
+          <span
+            aria-hidden="true"
+            className="ml-1.5 inline-block h-[30px] w-4 animate-blink bg-acc align-baseline md:ml-2.5 md:h-14 md:w-[30px]"
+          />
+        </h1>
+        <div className="mt-5 text-[15px] text-acc">
+          &gt; full-stack developer · applied AI
+        </div>
+        <p className="mt-3.5 max-w-[560px] text-sm leading-[1.6] text-muted">
+          I build full-stack applications and the AI systems that make them
+          intelligent. Java &amp; Spring Boot on the back end, Angular &amp;
+          React on the front, and RAG, embeddings, and multi-agent workflows in
+          between — currently building all three at TCS.
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-acc bg-acc px-5 py-3 text-[13px] font-bold text-bg transition-colors hover:border-acc-hi hover:bg-acc-hi hover:text-bg"
+          >
+            [ ./resume.pdf ↓ ]
+          </a>
+          <a
+            href="#work"
+            className="border border-line2 px-5 py-3 text-[13px] text-fg2 transition-colors hover:border-acc hover:text-acc"
+          >
+            [ view work → ]
+          </a>
         </div>
       </div>
 
-      <a
-        href="#about"
-        aria-label="Scroll to about"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-xs text-faint transition-colors hover:text-dim sm:flex"
-      >
-        <span>scroll</span>
-        <ArrowDown size={14} className="animate-bounce" />
-      </a>
+      {/* Right column: status / location / now / education */}
+      <div className="grid grid-rows-[auto_1fr_1fr_1fr] gap-3.5 md:col-span-4">
+        <div className="border border-line bg-panel px-5 py-[18px]">
+          <div className="text-[10px] uppercase tracking-[2px] text-faint">
+            status
+          </div>
+          {profile.openToWork ? (
+            <div className="mt-2 flex items-center gap-2 text-[13px] font-bold text-acc">
+              <span className="inline-block h-2 w-2 animate-pulse-dot rounded-full bg-acc" />
+              OPEN TO OPPORTUNITIES
+            </div>
+          ) : (
+            <div className="mt-2 text-[13px] font-bold text-muted">
+              HEADS-DOWN @ TCS
+            </div>
+          )}
+        </div>
+        <div className="border border-line bg-panel px-5 py-[18px]">
+          <div className="text-[10px] uppercase tracking-[2px] text-faint">
+            location
+          </div>
+          <div className="mt-2 text-[13px] text-soft">
+            {profile.location} <span className="text-faint">· IST</span>
+          </div>
+        </div>
+        <div className="border border-line bg-panel px-5 py-[18px]">
+          <div className="text-[10px] uppercase tracking-[2px] text-faint">
+            now
+          </div>
+          <div className="mt-2 text-[13px] text-soft">
+            {profile.role} <span className="text-acc">@ TCS</span>
+          </div>
+        </div>
+        <div className="border border-line bg-panel px-5 py-[18px]">
+          <div className="text-[10px] uppercase tracking-[2px] text-faint">
+            education
+          </div>
+          <div className="mt-2 text-[13px] text-soft">
+            B.Tech EEE — VIT Vellore <span className="text-faint">&apos;25</span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
