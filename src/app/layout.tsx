@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { profile } from "@/lib/data";
 import "./globals.css";
 
@@ -28,9 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jetbrainsMono.variable}>
-      <body className="bg-bg font-mono text-sm leading-[1.6] text-body antialiased">
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="bg-bg font-sans text-ink antialiased">
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
