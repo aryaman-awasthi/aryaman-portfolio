@@ -1,3 +1,8 @@
+// Canonical production URL — used for SEO metadata, sitemap, robots, and JSON-LD.
+// Override with NEXT_PUBLIC_SITE_URL when deploying under a different domain.
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.aryamanawasthi.com";
+
 export const profile = {
   name: "Aryaman Awasthi",
   role: "Full-Stack Developer",
