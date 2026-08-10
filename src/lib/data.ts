@@ -6,7 +6,7 @@ export const siteUrl =
 export const profile = {
   name: "Aryaman Awasthi",
   role: "Full-Stack Developer",
-  openToWork: true,
+  openToWork: false,
   location: "Mumbai, India",
   email: "aryaman.awasthi79@gmail.com",
   phone: "+91 70073 34949",
